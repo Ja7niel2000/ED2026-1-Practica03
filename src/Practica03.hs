@@ -40,8 +40,8 @@ variables prop = varsAux prop []
   where
     varsAux :: Prop -> [String] -> [String]
     varsAux (Var x) collector
-        | include x collector = colletor
-        | otherwise = collecor ++ [x]
+        | include x collector = collector
+        | otherwise = collector ++ [x]
     varsAux (Cons _) collector = collector
     varsAux (Not f) collector  = varsAux f collector
     varsAux (And f g) collector = varsAux g (varsAux f collector )
@@ -51,14 +51,13 @@ variables prop = varsAux prop []
 
 -- Ejercicio 2
 interpretacion :: Prop -> Estado -> Bool
-interpretacion (const a) _ = a
-interpretacion (var x) list = include x list
+interpretacion (Cons a) _ = a
+interpretacion (Var x) list = include x list
 interpretacion (Not prop) list = not (interpretacion prop list)
-interpretacion (And x y) list = (intrepretacion y list) && (interpretacion x list)
+interpretacion (And x y) list = (interpretacion y list) && (interpretacion x list)
 interpretacion (Or x y) list = (interpretacion x list) || (interpretacion y list) 
 interpretacion (Impl x y) list = (interpretacion (Not x) list) || (interpretacion y list)
 interpretacion (Syss x y) list = (interpretacion x list) == (interpretacion y list)
-
 
 -- Ejercicio 3
 estadosPosibles :: Prop -> [Estado]
@@ -69,10 +68,10 @@ modelos :: Prop -> [Estado]
 modelos prop = modelosRecur prop (estadosPosibles prop) []
     where
         modelosRecur :: Prop -> [Estado] -> [Estado] -> [Estado]
-        modelosRecur _ [] _ = collector
+        modelosRecur _ [] collector = collector
         modelosRecur prop (x:xs) collector 
-            | interpretacion prop x = modelosRecur xs prop (collector ++ [x])
-            | otherwise             = modelosRecur xs prop collector
+            | interpretacion prop x = modelosRecur prop xs (collector ++ [x])
+            | otherwise             = modelosRecur prop xs collector
 
 -- Ejercicio 5
 sonEquivalentes :: Prop -> Prop -> Bool
@@ -106,7 +105,19 @@ tautologia p = sonEquivalentes p (Cons True)
 
 -- Ejercicio 7
 consecuenciaLogica :: [Prop] -> Prop -> Bool
-consecuenciaLogica = undefined
+consecuenciaLogica props prop = verifica prop (modelos (conjunciones props)) 
+    where
+        verifica :: Prop -> [Estado] -> Bool
+        verifica prop [] = True
+        verifica prop (x:xs)
+            | interpretacion prop x = verifica prop xs
+            | otherwise             = False
+
+--Funion que hace la conjuncion de una lista de proposiciones
+conjunciones :: [Prop] -> Prop
+conjunciones [] = Cons True
+conjunciones (x:[]) = x
+conjunciones (x:xs) = And (x) (conjunciones xs)
 
 --Funcion auxiliar
 conjuntoPotencia :: [a] -> [[a]]
@@ -117,4 +128,4 @@ include :: (Eq a) => a -> [a] -> Bool
 include _ [] = False
 include elem (head : sublist)
     | elem == head = True
-    | elem != head = include elem ys
+    | otherwise    = include elem sublist

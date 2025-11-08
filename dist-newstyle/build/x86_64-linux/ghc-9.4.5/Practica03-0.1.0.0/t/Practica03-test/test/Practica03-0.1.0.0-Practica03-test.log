@@ -1,0 +1,60 @@
+Test suite Practica03-test: RUNNING...
+
+Tests variables
+  Fórmula Tt [✔]
+  Fórumla Cr [✔]
+  Fórmula Cg [✔]
+Tests interpretacion
+  Fórmula Tt [✔]
+  Fórumla Cr [✔]
+  Fórmula Cg-True [✔]
+  Fórmula Cg-False [✔]
+Tests estadosPosibles
+  Fórmula Tt [✔]
+  Fórmula Cr [✔]
+  Fórmula Cg [✘]
+Tests modelos
+  Fórmula Tt [✔]
+  Fórmula Cr [✔]
+  Fórmula Cg [✘]
+Tests sonEquivalentes
+  Fórmulas Equivalentes [✔]
+  Fórmulas No Equivalentes [✔]
+Tests tautologia
+  Fórmula Tt [✔]
+  Fórmula Cr [✔]
+  Fórmula Cg [✔]
+Tests consecuenciaLogica
+  Argumento válido [✔]
+  Argumento válido 2 [✔]
+  Argumento inválido [✔]
+  Gamma insatisfacible [✔]
+
+Failures:
+
+  test/Practica03Test.hs:51:36: 
+  1) Tests estadosPosibles Fórmula Cg
+       Actual list is not a permutation of expected list!
+         expected elements: [["q","s","p"], ["q","s"], ["q","p"], ["q"], ["s","p"], ["s"], ["p"], []]
+         actual elements:   [["p","q","s"], ["p","q"], ["p","s"], ["p"], ["q","s"], ["q"], ["s"], []]
+         missing elements:  [["q","s","p"], ["q","p"], ["s","p"]]
+         extra elements:    [["p","q","s"], ["p","q"], ["p","s"]]
+
+  To rerun use: --match "/Tests estadosPosibles/Fórmula Cg/" --seed 1027944618
+
+  test/Practica03Test.hs:61:28: 
+  2) Tests modelos Fórmula Cg
+       Actual list is not a permutation of expected list!
+         expected elements: [["q","s","p"], ["q","p"], ["q"], ["s","p"], ["s"], ["p"], []]
+         actual elements:   [["p","q","s"], ["p","q"], ["p","s"], ["p"], ["q"], ["s"], []]
+         missing elements:  [["q","s","p"], ["q","p"], ["s","p"]]
+         extra elements:    [["p","q","s"], ["p","q"], ["p","s"]]
+
+  To rerun use: --match "/Tests modelos/Fórmula Cg/" --seed 1027944618
+
+Randomized with seed 1027944618
+
+Finished in 0.0057 seconds
+22 examples, 2 failures
+Test suite Practica03-test: FAIL
+Test suite logged to: /home/jatniel/practicasEDiscretas/ED2026-1-Practica03/dist-newstyle/build/x86_64-linux/ghc-9.4.5/Practica03-0.1.0.0/t/Practica03-test/test/Practica03-0.1.0.0-Practica03-test.log
