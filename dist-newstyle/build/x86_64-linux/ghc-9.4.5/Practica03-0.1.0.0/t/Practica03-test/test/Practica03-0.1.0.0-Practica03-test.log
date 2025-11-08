@@ -40,7 +40,7 @@ Failures:
          missing elements:  [["q","s","p"], ["q","p"], ["s","p"]]
          extra elements:    [["p","q","s"], ["p","q"], ["p","s"]]
 
-  To rerun use: --match "/Tests estadosPosibles/Fórmula Cg/" --seed 1027944618
+  To rerun use: --match "/Tests estadosPosibles/Fórmula Cg/" --seed 793189386
 
   test/Practica03Test.hs:61:28: 
   2) Tests modelos Fórmula Cg
@@ -50,11 +50,11 @@ Failures:
          missing elements:  [["q","s","p"], ["q","p"], ["s","p"]]
          extra elements:    [["p","q","s"], ["p","q"], ["p","s"]]
 
-  To rerun use: --match "/Tests modelos/Fórmula Cg/" --seed 1027944618
+  To rerun use: --match "/Tests modelos/Fórmula Cg/" --seed 793189386
 
-Randomized with seed 1027944618
+Randomized with seed 793189386
 
-Finished in 0.0057 seconds
+Finished in 0.0036 seconds
 22 examples, 2 failures
 Test suite Practica03-test: FAIL
 Test suite logged to: /home/jatniel/practicasEDiscretas/ED2026-1-Practica03/dist-newstyle/build/x86_64-linux/ghc-9.4.5/Practica03-0.1.0.0/t/Practica03-test/test/Practica03-0.1.0.0-Practica03-test.log

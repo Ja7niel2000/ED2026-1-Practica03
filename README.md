@@ -26,5 +26,18 @@ En esta sección deben eliminar esta línea de texto, borrar la leyenda "Integra
     - 317167812
 
 ## Comentarios
+Los test "Tests estadosPosibles, Fórmula Cg" y "Tests modelos, Fórmula Cg" Salen incorrectos porque los resultados están en un orden diferente, pero contienen los mismos elementos que lo que esperan el tests.
 
-Recuerden que opcionalmente pueden agregar un comentario (ver los lineamientos de entrega). Si es el caso, borren esta linea y dejen su comentario.
+Tests estadosPosibles, Fórmula Cg
+expected elements: 
+[["q","s","p"], ["q","s"], ["q","p"], ["q"], ["s","p"], ["s"],["p"], []]
+actual elements:   
+[["p","q","s"], ["p","q"], ["p","s"], ["p"], ["q","s"], ["q"], ["s"], []]
+(Mismos elementos, diferente orden)
+
+Tests modelos, Fórmula Cg
+expected elements: 
+[["q","s","p"], ["q","p"], ["q"], ["s","p"], ["s"], ["p"], []]
+actual elements:   
+[["p","q","s"], ["p","q"], ["p","s"], ["p"], ["q"], ["s"], []]
+(Mismos elementos, diferente orden)
